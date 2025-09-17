@@ -258,7 +258,7 @@ class FirstPersonDoom {
     }
     
 updatePlayerVisual() {
-    this.playerElement.style.left = (this.player.x - 75) + 'px'; // La mitad de 150px
+    this.playerElement.style.left = (this.player.x - 75) + 'px'; 
     
     if (this.player.isMoving) {
         this.playerElement.classList.add('walking');
@@ -365,13 +365,13 @@ updatePlayerVisual() {
     this.player.ammo--;
     
     const dx = this.player.aimX - this.player.x;
-    const dy = this.player.aimY - (window.innerHeight - 190); // Era -90, ahora -190
+    const dy = this.player.aimY - (window.innerHeight - 190); 
     const distance = Math.sqrt(dx * dx + dy * dy);
     
     const speed = 8;
     const bullet = {
         x: this.player.x,
-        y: window.innerHeight - 190, // Era -90, ahora -190
+        y: window.innerHeight - 190, 
         vx: (dx / distance) * speed,
         vy: (dy / distance) * speed,
         fromPlayer: true,
@@ -470,7 +470,7 @@ checkCollisions() {
                 });
                  } else {
             const dx = bullet.x - this.player.x;
-            const dy = bullet.y - (window.innerHeight - 190); // Era -90, ahora -190
+            const dy = bullet.y - (window.innerHeight - 190); 
             const distance = Math.sqrt(dx * dx + dy * dy);
             
             if (distance < 30) {
@@ -582,7 +582,7 @@ checkCollisions() {
         const gameOverEl = document.createElement('div');
         gameOverEl.className = 'game-over';
         gameOverEl.innerHTML = `
-            <div>💀 GAME OVER 💀</div>
+            <div> GAME OVER </div>
             <div style="font-size: 24px; margin-top: 20px;">Puntuación: ${this.score}</div>
             <div style="font-size: 24px; margin-top: 10px;">Oleada alcanzada: ${this.wave}</div>
             <div style="font-size: 18px; margin-top: 20px;">Presiona F5 para reiniciar</div>

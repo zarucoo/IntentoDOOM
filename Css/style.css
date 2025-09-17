@@ -7,20 +7,20 @@ body {
     overflow: hidden;
     cursor: none;
 }
-
+/* Fondo del juego*/
 #gameContainer {
     width: 100vw;
     height: 100vh;
-    background-image: url('../imagenes/fondo.png'); /* Ruta relativa desde CSS */
+    background-image: url('../imagenes/fondo.png'); 
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #444; /* Color visible si la imagen no carga */
-    /* Bordes para diagnosticar */
-    border: 2px solid red; /* Temporal para ver si el contenedor se muestra */
+    background-color: #444; 
+    
+    border: 2px solid red; 
 }
 
-/* Crosshair/Mira - Puedes usar imagen personalizada */
+/*Mira  */
 #crosshair {
     position: absolute;
     top: 50%;
@@ -48,11 +48,11 @@ body {
     transition: left 0.1s ease-out;
 }
 
-/* Contenedor del jugador - más grande y más atrás */
-/* Contenedor del jugador - posicionarlo en la parte inferior */
+/* Contenedor del jugador  */
+
 #player {
     position: absolute;
-    bottom: 20px; /* Muy abajo, casi pegado al borde */
+    bottom: 20px; 
     width: 150px;
     height: 200px;
     z-index: 85;
@@ -61,7 +61,7 @@ body {
 /* Jugador con imagen */
 .player-body {
     width: 100%;
-    height: 100%; /* Usa todo el contenedor */
+    height: 100%; 
     background-image: url('../imagenes/jugador.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -71,11 +71,9 @@ body {
     position: relative;
 }
 
-/* Ocultar las piernas CSS ya que usas imagen */
 .player-legs {
     display: none;
 }
-/* Ocultar elementos CSS del jugador cuando uses imagen */
 .player-body::before,
 .player-body::after {
     display: none;
@@ -87,7 +85,7 @@ body {
     left: 20%;
     right: 20%;
     height: 30%;
-    background: transparent; /* Oculto si usas imagen completa del jugador */
+    background: transparent; 
     border-radius: 0 0 4px 4px;
     border: 1px solid #555;
 }
@@ -104,7 +102,7 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    border: none; /* Removemos el borde CSS */
+    border: none; 
     border-radius: 50%;
     z-index: 75;
     opacity: 0;
@@ -135,8 +133,8 @@ body {
 
 #instructions {
     position: fixed;
-    bottom: 10px;   /* pegado al borde inferior */
-    right: 10px;    /* pegado al borde derecho */
+    bottom: 10px;   
+    right: 10px;   
     background: rgba(0,0,0,0.6);
     color: white;
     padding: 8px 12px;
@@ -160,8 +158,8 @@ body {
 /* Contenedor del enemigo - más grande */
 .enemy {
     position: absolute;
-    width: 120px;  /* Era 80px */
-    height: 180px; /* Era 120px */
+    width: 120px;  
+    height: 180px; 
     z-index: 50;
     cursor: crosshair;
     transition: all 0.1s ease;
