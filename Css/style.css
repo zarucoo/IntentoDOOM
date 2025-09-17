@@ -1,0 +1,335 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    cursor: none;
+}
+
+#gameContainer {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../imagenes/fondo.png'); /* Ruta relativa desde CSS */
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #444; /* Color visible si la imagen no carga */
+    /* Bordes para diagnosticar */
+    border: 2px solid red; /* Temporal para ver si el contenedor se muestra */
+}
+
+/* Crosshair/Mira - Puedes usar imagen personalizada */
+#crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    z-index: 100;
+    pointer-events: none;
+    /* Opción 1: Crosshair con imagen */
+    background-image: url('../imagenes/mira.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+#player {
+    position: absolute;
+    bottom: 50px;
+    width: 60px;
+    height: 80px;
+    z-index: 85;
+    transition: left 0.1s ease-out;
+}
+
+/* Contenedor del jugador - más grande y más atrás */
+/* Contenedor del jugador - posicionarlo en la parte inferior */
+#player {
+    position: absolute;
+    bottom: 20px; /* Muy abajo, casi pegado al borde */
+    width: 150px;
+    height: 200px;
+    z-index: 85;
+    transition: left 0.1s ease-out;
+}
+/* Jugador con imagen */
+.player-body {
+    width: 100%;
+    height: 100%; /* Usa todo el contenedor */
+    background-image: url('../imagenes/jugador.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    border-radius: 0;
+    position: relative;
+}
+
+/* Ocultar las piernas CSS ya que usas imagen */
+.player-legs {
+    display: none;
+}
+/* Ocultar elementos CSS del jugador cuando uses imagen */
+.player-body::before,
+.player-body::after {
+    display: none;
+}
+
+.player-legs {
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    right: 20%;
+    height: 30%;
+    background: transparent; /* Oculto si usas imagen completa del jugador */
+    border-radius: 0 0 4px 4px;
+    border: 1px solid #555;
+}
+
+/* Escudo con imagen */
+#shield-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background-image: url('../imagenes/escudo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none; /* Removemos el borde CSS */
+    border-radius: 50%;
+    z-index: 75;
+    opacity: 0;
+    pointer-events: none;
+    animation: shield-pulse 1s ease-in-out infinite alternate;
+}
+
+#shield-indicator.active {
+    opacity: 0.8;
+}
+
+@keyframes shield-pulse {
+    0% { transform: translate(-50%, -50%) scale(0.95); }
+    100% { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+#hud {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+    background: rgba(0,0,0,0.8);
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 18px;
+    border: 2px solid #333;
+}
+
+#instructions {
+    position: fixed;
+    bottom: 10px;   /* pegado al borde inferior */
+    right: 10px;    /* pegado al borde derecho */
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+
+
+/* Enemigo normal con imagen */
+.enemy {
+    position: absolute;
+    width: 80px;
+    height: 120px;
+    z-index: 50;
+    cursor: crosshair;
+    transition: all 0.1s ease;
+    pointer-events: auto;
+}
+
+/* Contenedor del enemigo - más grande */
+.enemy {
+    position: absolute;
+    width: 120px;  /* Era 80px */
+    height: 180px; /* Era 120px */
+    z-index: 50;
+    cursor: crosshair;
+    transition: all 0.1s ease;
+    pointer-events: auto;
+}
+
+/* Sprite del enemigo */
+.enemy-sprite {
+    width: 100%;
+    height: 100%;
+    background-image: url('../imagenes/enemigo1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+}
+
+/* Ocultar elementos CSS del enemigo cuando uses imagen */
+.enemy-sprite::before,
+.enemy-sprite::after {
+    display: none;
+}
+
+/* Enemigo especial con imagen */
+.special-enemy {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 50;
+    cursor: crosshair;
+    transition: all 0.1s ease;
+    pointer-events: auto;
+}
+
+.special-enemy-sprite {
+    width: 100%;
+    height: 100%;
+    background-image: url('../imagenes/enemigo2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    border: 3px solid #6600aa;
+    position: relative;
+}
+
+/* Ocultar elementos CSS del enemigo especial cuando uses imagen */
+.special-enemy-sprite::before,
+.special-enemy-sprite::after {
+    display: none;
+}
+
+.enemy:hover .enemy-sprite {
+    transform: scale(1.05);
+}
+
+/* Balas con imágenes */
+.bullet {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-image: url('../imagenes/bala.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    z-index: 40;
+    pointer-events: none;
+}
+
+.enemy-bullet {
+    background-image: url('../imagenes/ataque1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#weapon {
+    display: none;
+}
+
+.muzzle-flash {
+    position: absolute;
+    bottom: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background: #ffffff;
+    border-radius: 50%;
+    z-index: 95;
+    animation: flash 0.15s ease-out;
+}
+
+@keyframes flash {
+    0% { 
+        opacity: 1; 
+        transform: translateX(-50%) scale(1); 
+    }
+    100% { 
+        opacity: 0; 
+        transform: translateX(-50%) scale(2); 
+    }
+}
+
+.damage-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 0, 0, 0.3);
+    z-index: 80;
+    animation: damage-flash 0.3s ease-out;
+    pointer-events: none;
+}
+
+@keyframes damage-flash {
+    0% { opacity: 0.6; }
+    100% { opacity: 0; }
+}
+
+.walking {
+    animation: walk 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes walk {
+    0% { transform: translateY(0px) rotate(-1deg); }
+    100% { transform: translateY(-3px) rotate(1deg); }
+}
+
+#wave-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    color: #00ff00;
+    z-index: 150;
+    text-align: center;
+    background: rgba(0,0,0,0.8);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #00ff00;
+    opacity: 0;
+    animation: wave-announcement 3s ease-in-out;
+}
+
+@keyframes wave-announcement {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+    20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+}
+
+.game-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    color: #ff0000;
+}

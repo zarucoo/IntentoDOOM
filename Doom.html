@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doom Primera Persona</title>
+    <link rel="stylesheet" href="Css/style.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <div id="crosshair"></div>
+        <div id="shield-indicator"></div>
+        
+        <div id="player">
+            <div class="player-body">
+                <div class="player-legs"></div>
+            </div>
+        </div>
+        
+        <div id="weapon"></div>
+        
+        <div id="hud">
+            <div>❤️ Salud: <span id="health">100</span></div>
+            <div>🔫 Munición: <span id="ammo">100</span></div>
+            <div>👹 Enemigos: <span id="enemyCount">0</span></div>
+            <div>📊 Puntos: <span id="score">0</span></div>
+            <div>🌊 Oleada: <span id="wave">1</span></div>
+            <div id="shield-status" style="display:none;">🛡️ Escudo: <span id="shield-cooldown">Listo</span></div>
+        </div>
+        
+        <div id="instructions">
+            <div><strong>🎮 Controles:</strong></div>
+            <div>A/D - Mover izq/der</div>
+            <div>Mouse - Apuntar</div>
+            <div>Click - Disparar</div>
+            <div>R - Recargar</div>
+            <div id="shield-instruction" style="display:none;">E - Escudo (Oleada 3+)</div>
+        </div>
+    </div>
+
+    <script src="Js/script.js"></script>
+</body>
+</html>
