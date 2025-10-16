@@ -468,7 +468,7 @@ checkCollisions() {
                         }
                     }
                 });
-                 } else {
+                } else {
             const dx = bullet.x - this.player.x;
             const dy = bullet.y - (window.innerHeight - 190); 
             const distance = Math.sqrt(dx * dx + dy * dy);
